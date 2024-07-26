@@ -5,11 +5,11 @@ FROM python:3.8
 WORKDIR /app
 
 # Copia los requerimientos y los instala
-COPY ./backend/requirements.txt /app/requirements.txt
+COPY ./requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia el código del backend
-COPY backend /app
+COPY ./app /app
 
 # Expone el puerto 8000
 EXPOSE 8000
