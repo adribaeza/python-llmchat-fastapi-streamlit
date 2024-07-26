@@ -24,3 +24,19 @@ The `frontend` directory contains everything related to the Streamlit applicatio
 - `frontend-service.yaml`: This is the Kubernetes configuration file for the frontend Service.
 
 ## Deployment
+
+
+Para probar tu aplicación FastAPI localmente, sigue estos pasos:
+
+1. **Instala las dependencias**: Ejecuta `pip install -r requirements.txt` en tu terminal para instalar las dependencias necesarias.
+
+2. **Ejecuta la aplicación**: Ejecuta `uvicorn app.main:app --reload` en tu terminal para iniciar la aplicación. El parámetro `--reload` hace que el servidor se reinicie automáticamente cada vez que cambias algún archivo de código.
+
+3. **Abre el navegador**: Ve a `http://localhost:8000` en tu navegador para ver tu aplicación en funcionamiento. También puedes ir a `http://localhost:8000/docs` para ver la documentación interactiva de Swagger UI para tu API.
+
+Recuerda que debes estar en el directorio correcto en tu terminal cuando ejecutes estos comandos (debería ser el directorio que contiene tu archivo `main.py` y `requirements.txt`).
+
+
+
+
+#https://github.com/pablotoledo/StreamMDCollector/tree/main
