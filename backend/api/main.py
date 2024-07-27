@@ -126,6 +126,6 @@ async def chat(request: ChatRequest, user: dict = Depends(get_current_user)):
 api.include_router(api_router)
 
 # Execute the API with Uvicorn only if the script is executed directly in the local environment
-if __name__ == '__main__':
-    import uvicorn
-    uvicorn.run(api)
+#if __name__ == '__main__':
+#    import uvicorn
+#    uvicorn.run(api)

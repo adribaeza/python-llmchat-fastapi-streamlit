@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  test-backend:
+  continuous-integration:
     runs-on: ubuntu-latest
 
     steps:
