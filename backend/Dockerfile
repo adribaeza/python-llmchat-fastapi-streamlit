@@ -11,8 +11,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy backend code into the container at /api
 COPY ./api /api
 
-# Expose the port the app runs in
+# Expose the port the api runs in
 EXPOSE 8000
+
+# Define environment variable
+ENV NAME TinyLlamaLLMApi
 
 # Execute the command to run the app when the container starts
 CMD ["uvicorn", "main:api", "--host", "0.0.0.0", "--port", "8000"]

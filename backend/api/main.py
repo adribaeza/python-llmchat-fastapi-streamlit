@@ -16,6 +16,14 @@ from pydantic import BaseModel
 import asyncio
 import os
 
+#Default LLM configuration values
+DEFAULT_MAX_NEW_TOKENS = 100
+DEFAULT_DO_SAMPLE = False
+DEFAULT_TEMPERATURE = 0.3
+DEFAULT_TOP_K = 50
+DEFAULT_TOP_P = 0.6
+LLM_MODEL = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+
 #instance logger
 logger = logging.getLogger(__name__)
 
@@ -31,8 +39,7 @@ api = FastAPI(title='LLM Chat Service with TinyLLama',
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 # Static token for the API
-STATIC_TOKEN = "myllservicetoken2024"
-#STATIC_TOKEN = os.getenv("STATIC_TOKEN")
+STATIC_TOKEN = "myllservicetoken2024" #os.getenv("STATIC_TOKEN")
 
 def verify_token(token: str):
     if token != STATIC_TOKEN:
@@ -54,17 +61,37 @@ api.add_middleware(
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
+
 logger.info('Adding v1 endpoints..')
 
 # Load the model with the TinyLlama model
-pipe = pipeline("text-generation", model="TinyLlama/TinyLlama-1.1B-Chat-v1.0", torch_dtype=torch.bfloat16, device_map="auto")
+pipe = pipeline("text-generation", model=LLM_MODEL, torch_dtype=torch.bfloat16, device_map="auto")
 
 
 class ChatRequest(BaseModel):
     text: str
+    max_new_tokens: int = DEFAULT_MAX_NEW_TOKENS
+    do_sample: bool = DEFAULT_DO_SAMPLE
+    temperature: float = DEFAULT_TEMPERATURE
+    top_k: int = DEFAULT_TOP_K
+    top_p: float = DEFAULT_TOP_P
 
 
+# max_new_tokens:   Specifies the maximum number of tokens that the model will generate in the response.
+#                   A token can be a word, part of a word, or a punctuation symbol.
+# do_sample:    Indicates whether to use sampling instead of always taking the token with the highest probability.
+#               If True, the model will select tokens based on a probability distribution,
+#               which can generate more varied and creative responses.
+# temperature:  Controls the randomness of the model's predictions. A higher value (e.g., 1.0) will make the predictions more diverse,
+#               while a lower value (e.g., 0.2) will make the predictions more deterministic and repetitive.
+# top_k: Limits the model's predictions to the k most probable tokens. 
+#        For example, if top_k=50, the model will only consider the top 50 most probable tokens at each step of generation.
+# top_p: Also known as nucleus sampling, this parameter sets a cumulative probability threshold. 
+#        For example, if top_p=0.9, the model will consider tokens whose cumulative probability is up to 90%,
+#        which can help generate more coherent and less error-prone responses.
 def generate_text(prompt, max_new_tokens, do_sample, temperature, top_k, top_p):
+    if top_p is not None:
+        do_sample = True
     return pipe(
         prompt,
         max_new_tokens=max_new_tokens,
@@ -74,7 +101,7 @@ def generate_text(prompt, max_new_tokens, do_sample, temperature, top_k, top_p):
         top_p=top_p
     )
 
-async def process_message(messages):
+async def process_message(messages, max_new_tokens, do_sample, temperature, top_k, top_p):
     # Get prompt from messages
     prompt = pipe.tokenizer.apply_chat_template(
         messages, tokenize=False, add_generation_prompt=True
@@ -85,11 +112,11 @@ async def process_message(messages):
         None,
         generate_text,
         prompt,
-        256,  # max_new_tokens
-        True,  # do_sample
-        0.5,  # temperature
-        50,  # top_k
-        0.8  # top_p
+        max_new_tokens,
+        do_sample,
+        temperature,
+        top_k,
+        top_p
     )
     return outputs
 
@@ -111,7 +138,14 @@ async def chat(request: ChatRequest, user: dict = Depends(get_current_user)):
         ]
 
         # Process the messages with the model and get the output in async mode
-        outputs = await process_message(messages)
+        outputs = await process_message(
+            messages,
+            request.max_new_tokens,
+            request.do_sample,
+            request.temperature,
+            request.top_k,
+            request.top_p
+        )
 
         #Get the output from the model
         output = outputs[0]["generated_text"]
