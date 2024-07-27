@@ -40,3 +40,61 @@ Recuerda que debes estar en el directorio correcto en tu terminal cuando ejecute
 
 
 #https://github.com/pablotoledo/StreamMDCollector/tree/main
+
+
+# Autenticarse en GitHub Container Registry
+#if this registry is private , need authenticate with -> docker login ghcr.io -u <tu-usuario-de-github> -p <tu-token-de-github>
+
+# Descargar la imagen desde GitHub Container Registry
+docker pull ghcr.io/adribaeza/llm-tinyllama-backend:latest
+
+# Ejecutar el contenedor
+docker run -d -p 8000:8000 ghcr.io/adribaeza/llm-tinyllama-backend:latest
+
+
+# llm-tinyllama-backend Docker Deployment Guide
+
+This guide provides detailed instructions on how to pull, build, run, verify, and check logs for the `llm-tinyllama-backend` Docker image from GitHub Container Registry.
+
+## Prerequisites
+
+- Docker Desktop installed on your machine. You can download it from [Docker's official website](https://www.docker.com/products/docker-desktop).
+
+## Steps
+
+### 1. Open Terminal
+
+Open your preferred terminal application (PowerShell, cmd, Terminal on macOS, or a Linux terminal).
+
+### 2. Pull the Docker Image
+
+Run the following command to pull the Docker image from the GitHub Container Registry:
+
+`docker pull ghcr.io/adribaeza/llm-tinyllama-backend:latest`
+
+Verify Image Download
+`docker images`
+
+Run the Docker Container
+`docker run -d --name llm-tinyllama-backend -p 8000:8000 ghcr.io/adribaeza/llm-tinyllama-backend:latest`
+-d: Runs the container in detached mode.
+--name llm-tinyllama-backend: Names the container.
+-p 8000:8000: Maps port 8000 of the container to port 8000 on your machine. Adjust the ports if necessary.
+ghcr.io/adribaeza/llm-tinyllama-backend:latest: Specifies the image to use.
+
+Verify the Container is Running
+docker ps
+
+Access the Service
+If the application exposes a web interface or API, access it via your web browser or tools like curl using the address http://localhost:8000 (or the port you mapped).
+
+Check Container Logs
+docker logs llm-tinyllama-backend
+
+Stop and Remove the Container
+
+docker stop llm-tinyllama-backend
+docker rm llm-tinyllama-backend
+
+Remove the Docker Image (if needed)
+docker rmi ghcr.io/adribaeza/llm-tinyllama-backend:latest

@@ -2,17 +2,17 @@
 FROM python:3.10-slim
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /api
 
-# Copy the requirements file into the container at /app and install dependencies
-COPY ./requirements.txt /app/requirements.txt
+# Copy the requirements file into the container at /api and install dependencies
+COPY ./requirements.txt /api/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy backend code into the container at /app
-COPY ./app /app
+# Copy backend code into the container at /api
+COPY ./api /api
 
-# Expone el puerto 8000
+# Expose the port the app runs in
 EXPOSE 8000
 
-# Comando para ejecutar el servidor de FastAPI con Uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Execute the command to run the app when the container starts
+CMD ["uvicorn", "main:api", "--host", "0.0.0.0", "--port", "8000"]
