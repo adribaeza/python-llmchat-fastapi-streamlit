@@ -2,7 +2,7 @@ name: Build and Deploy Docker Images
 
 on:
   workflow_run:
-    workflows: ["Test Backend and Frontend"]
+    workflows: ["CI"]
     types:
       - completed
 
