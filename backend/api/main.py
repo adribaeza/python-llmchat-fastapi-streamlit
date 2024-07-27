@@ -9,7 +9,7 @@ import torch
 from fastapi import FastAPI, HTTPException, APIRouter, Depends
 from fastapi.security import OAuth2PasswordBearer
 from transformers import pipeline
-import docs #Import the documentation
+
 from starlette.middleware.cors import CORSMiddleware #Import the middleware
 import json
 from pydantic import BaseModel
@@ -23,7 +23,9 @@ logger = logging.getLogger(__name__)
 api_router = APIRouter(prefix="/api/v1")
 
 # Instance FastAPI
-api = FastAPI(title='LLM Chat Service with TinyLLama', description=docs.desc, version=docs.version)
+api = FastAPI(title='LLM Chat Service with TinyLLama', 
+              description='LLM Chat Service with TinyLlama by Adrián Baeza Prieto',
+              version="1.0.0")
 
 # OAuth2 configuration
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
