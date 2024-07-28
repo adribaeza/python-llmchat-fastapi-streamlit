@@ -1,0 +1,19 @@
+services:
+  backend:
+    image: ghcr.io/adribaeza/llm-tinyllama-backend:latest
+    volumes:
+      - ./backend/api:/api
+    ports:
+      - "8000:8000"
+    environment:
+      - MODULE_NAME=api.main
+      - VARIABLE_NAME=api
+
+  frontend:
+    image: ghcr.io/adribaeza/llm-tinyllama-frontend:latest
+    volumes:
+      - ./frontend/app:/app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend

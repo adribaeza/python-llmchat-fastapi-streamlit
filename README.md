@@ -98,3 +98,14 @@ docker rm llm-tinyllama-backend
 
 Remove the Docker Image (if needed)
 docker rmi ghcr.io/adribaeza/llm-tinyllama-backend:latest
+
+
+Razones para enviar el historial completo:
+Contexto: El modelo necesita el historial completo para entender el contexto de la conversación y generar respuestas adecuadas.
+Coherencia: Mantener el historial ayuda a asegurar que las respuestas sean coherentes con las interacciones anteriores.
+Memoria: Los modelos LLM no tienen memoria persistente entre solicitudes, por lo que necesitan el historial en cada solicitud para "recordar" lo que se ha discutido
+
+Cómo usar docker-compose
+Construir y ejecutar los servicios:
+Detener los servicios:
+Este archivo docker-compose.yml te permitirá levantar tanto el backend con FastAPI como el frontend con Streamlit de manera sencilla y reproducible.

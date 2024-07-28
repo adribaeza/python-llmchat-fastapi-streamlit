@@ -83,3 +83,12 @@ Contributions to StreamMDCollector are welcome! Please feel free to submit a Pul
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+
+
+# Desplegar el backend
+kubectl apply -f backend/k8s/backend-deployment.yaml
+kubectl apply -f backend/k8s/backend-service.yaml
+
+# Desplegar el frontend
+kubectl apply -f frontend/k8s/frontend-deployment.yaml
+kubectl apply -f frontend/k8s/frontend-service.yaml

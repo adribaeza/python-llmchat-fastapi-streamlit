@@ -68,8 +68,12 @@ logger.info('Adding v1 endpoints..')
 pipe = pipeline("text-generation", model=LLM_MODEL, torch_dtype=torch.bfloat16, device_map="auto")
 
 
+class Message(BaseModel):
+    role: str
+    content: str
+
 class ChatRequest(BaseModel):
-    text: str
+    messages: list[Message]
     max_new_tokens: int = DEFAULT_MAX_NEW_TOKENS
     do_sample: bool = DEFAULT_DO_SAMPLE
     temperature: float = DEFAULT_TEMPERATURE
@@ -125,19 +129,8 @@ async def process_message(messages, max_new_tokens, do_sample, temperature, top_
 @api_router.post("/chat")
 async def chat(request: ChatRequest, user: dict = Depends(get_current_user)):
     try:
-        #Define the messages to send to the model
-        messages = [
-            {
-                "role": "system",
-                "content": "Hi there! How can I help you today?",
-            },
-            {   
-                "role": "user", 
-                "content": f"{request.text}"
-            },
-        ]
-
-        # Process the messages with the model and get the output in async mode
+        logging.info(f"Received request: {request}")
+        messages = [{"role": msg.role, "content": msg.content} for msg in request.messages]
         outputs = await process_message(
             messages,
             request.max_new_tokens,
@@ -152,9 +145,10 @@ async def chat(request: ChatRequest, user: dict = Depends(get_current_user)):
         assistant_response = output.split("<|assistant|>")[-1].strip()
         json_results = json_results = json.dumps({"response": assistant_response}, ensure_ascii=False, indent=4).encode('utf8')
         return json.loads(json_results)
+
     except Exception as e:
-        logger.error(f'Error: {e}')
-        raise HTTPException(status_code=500, detail='Internal Server Error')
+        logging.error(f"Error processing request: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
 # Include main router in the API
 api.include_router(api_router)

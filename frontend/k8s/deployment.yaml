@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatllm-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatllm-frontend
+  template:
+    metadata:
+      labels:
+        app: chatllm-frontend
+    spec:
+      containers:
+      - name: chatllm-frontend
+        image: ghcr.io/adribaeza/llm-tinyllama-frontend:latest
+        ports:
+        - containerPort: 8501

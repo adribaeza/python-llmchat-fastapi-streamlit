@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatllm-backendapi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatllmapi
+  template:
+    metadata:
+      labels:
+        app: chatllmapi
+    spec:
+      containers:
+      - name: chatllmapi
+        image: ghcr.io/adribaeza/llm-tinyllama-backend:latest
+        ports:
+        - containerPort: 8000

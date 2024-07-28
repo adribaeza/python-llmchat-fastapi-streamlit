@@ -29,3 +29,11 @@ jobs:
       - name: Run backend tests with coverage
         run: |
           pytest --cov=backend/api --cov-report=term-missing backend/tests/test_main.py
+      
+      name: Install frontend dependencies
+        run: |
+          pip install -r ./frontend/requirements.txt
+
+      - name: Run frontend tests with coverage
+        run: |
+          pytest --cov=frontend/app --cov-report=term-missing frontend/tests/test_main.py

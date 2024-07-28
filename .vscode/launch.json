@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Streamlit: Run App",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/frontend/app/main.py",
+        "console": "integratedTerminal",
+        "args": [],
+        "env": {
+          "PYTHONPATH": "${workspaceFolder}",
+          "EMAIL": ""
+        },
+        "justMyCode": true,
+        "preLaunchTask": "Run Streamlit"
+      }
+    ]
+  }
