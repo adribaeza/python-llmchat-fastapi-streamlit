@@ -11,6 +11,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy backend code into the container at /api
 COPY ./api /api
 
+# Copy .env file into the container at /api
+COPY .env /api
+
 # Expose the port the api runs in
 EXPOSE 8000
 
