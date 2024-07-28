@@ -14,6 +14,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy .env file into the container at /api
 COPY .env /api
 
+# Export .env variables
+ENV $(cat .env | xargs)
+
 # Make port 8501 available to the world outside this container
 EXPOSE 8501
 

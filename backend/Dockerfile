@@ -14,6 +14,9 @@ COPY ./api /api
 # Copy .env file into the container at /api
 COPY .env /api
 
+# Export .env variables
+ENV $(cat .env | xargs)
+
 # Expose the port the api runs in
 EXPOSE 8000
 

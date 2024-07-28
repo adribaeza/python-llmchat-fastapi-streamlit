@@ -115,6 +115,25 @@ Este archivo docker-compose.yml te permitirá levantar tanto el backend con Fast
 
 kubectl create secret generic llm-service-token-secret --from-literal=SERVICE_TOKEN=myllservicetoken2024
 
+# Desplegar el backend
+kubectl apply -f backend/k8s/deployment.yaml
+kubectl apply -f backend/k8s/service.yaml
+
+# Desplegar el frontend
+kubectl apply -f frontend/k8s/deployment.yaml
+kubectl apply -f frontend/k8s/service.yaml
+
+kubectl get services
+
+
+kubectl delete service chatllm-backendapi-service
+kubectl delete service chatllm-frontend-service
+
+kubectl get deployments
+
+kubectl delete deployment chatllm-backendapi-deployment
+kubectl delete deployment chatllm-frontend-deployment
+
 export SERVICE_TOKEN=myllservicetoken2024
 
 docker-compose up

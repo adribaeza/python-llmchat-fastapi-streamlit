@@ -85,10 +85,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 
 
-# Desplegar el backend
-kubectl apply -f backend/k8s/backend-deployment.yaml
-kubectl apply -f backend/k8s/backend-service.yaml
-
-# Desplegar el frontend
-kubectl apply -f frontend/k8s/frontend-deployment.yaml
-kubectl apply -f frontend/k8s/frontend-service.yaml
