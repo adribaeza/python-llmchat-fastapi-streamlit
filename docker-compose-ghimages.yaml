@@ -8,7 +8,7 @@ services:
     environment:
       - MODULE_NAME=api.main
       - VARIABLE_NAME=api
-    
+      - SERVICE_TOKEN=myllservicetoken2024
 
   frontend:
     image: ghcr.io/adribaeza/llm-tinyllama-frontend:latest
@@ -18,4 +18,6 @@ services:
       - "8501:8501"
     depends_on:
       - backend
+    environment:
+      - SERVICE_TOKEN=myllservicetoken2024
     
