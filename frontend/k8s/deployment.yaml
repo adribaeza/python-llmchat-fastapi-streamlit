@@ -17,3 +17,9 @@ spec:
         image: ghcr.io/adribaeza/llm-tinyllama-frontend:latest
         ports:
         - containerPort: 8501
+        env:
+        - name: SERVICE_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: llm-service-token-secret
+              key: SERVICE_TOKEN

@@ -1,5 +1,14 @@
 import streamlit as st
 import requests, logging, os
+from dotenv import load_dotenv
+
+# Load the environment variables from the .env file
+load_dotenv()
+# Static token for the API
+STATIC_TOKEN = os.getenv("SERVICE_TOKEN")
+# Verify that the SERVICE_TOKEN is defined in the environment variables
+if STATIC_TOKEN is None:
+    raise ValueError("The SERVICE_TOKEN environment variable is not defined")
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -10,8 +19,6 @@ DEFAULT_DO_SAMPLE = True
 DEFAULT_TEMPERATURE = 0.5
 DEFAULT_TOP_K = 50
 DEFAULT_TOP_P = 0.9
-
-DEFAULT_TOKEN = "myllservicetoken2024" #os.getenv("TINYLLAMA_API_TOKEN")
 
 
 # Función para limpiar el historial de mensajes
@@ -83,7 +90,7 @@ def main():
             st.markdown(prompt)
         
         headers = {
-            "Authorization": f"Bearer {DEFAULT_TOKEN}",
+            "Authorization": f"Bearer {STATIC_TOKEN}",
             "Content-Type": "application/json"
         }
         # Construir el historial de la conversación

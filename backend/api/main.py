@@ -9,12 +9,22 @@ import torch
 from fastapi import FastAPI, HTTPException, APIRouter, Depends
 from fastapi.security import OAuth2PasswordBearer
 from transformers import pipeline
-
 from starlette.middleware.cors import CORSMiddleware #Import the middleware
 import json
 from pydantic import BaseModel
 import asyncio
 import os
+from dotenv import load_dotenv
+
+# Load the environment variables from the .env file
+load_dotenv()
+
+# Static token for the API
+STATIC_TOKEN = os.getenv("SERVICE_TOKEN")
+
+# Verify that the SERVICE_TOKEN is defined in the environment variables
+if STATIC_TOKEN is None:
+    raise ValueError("The SERVICE_TOKEN environment variable is not defined")
 
 #Default LLM configuration values
 DEFAULT_MAX_NEW_TOKENS = 100
@@ -24,8 +34,8 @@ DEFAULT_TOP_K = 50
 DEFAULT_TOP_P = 0.6
 LLM_MODEL = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
 
-#instance logger
-logger = logging.getLogger(__name__)
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 #Set default route for the API with prefix /api/v1
 api_router = APIRouter(prefix="/api/v1")
@@ -37,9 +47,6 @@ api = FastAPI(title='LLM Chat Service with TinyLLama',
 
 # OAuth2 configuration
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
-# Static token for the API
-STATIC_TOKEN = "myllservicetoken2024" #os.getenv("STATIC_TOKEN")
 
 def verify_token(token: str):
     if token != STATIC_TOKEN:
@@ -62,7 +69,7 @@ api.add_middleware(
     allow_headers=["*"],
 )
 
-logger.info('Adding v1 endpoints..')
+logging.info('Adding v1 endpoints..')
 
 # Load the model with the TinyLlama model
 pipe = pipeline("text-generation", model=LLM_MODEL, torch_dtype=torch.bfloat16, device_map="auto")

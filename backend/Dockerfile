@@ -5,11 +5,14 @@ FROM python:3.10-slim
 WORKDIR /api
 
 # Copy the requirements file into the container at /api and install dependencies
-COPY ./requirements.txt /api/requirements.txt
+COPY requirements.txt /api/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy backend code into the container at /api
 COPY ./api /api
+
+# Copy .env file into the container at /api
+COPY .env /api
 
 # Expose the port the api runs in
 EXPOSE 8000
