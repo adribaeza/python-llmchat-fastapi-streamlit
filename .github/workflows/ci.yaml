@@ -30,7 +30,7 @@ jobs:
         run: |
           pytest --cov=backend/api --cov-report=term-missing backend/tests/test_main.py
       
-      name: Install frontend dependencies
+      - name: Install frontend dependencies
         run: |
           pip install -r ./frontend/requirements.txt
 
