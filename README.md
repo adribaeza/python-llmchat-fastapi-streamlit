@@ -118,3 +118,4 @@ kubectl create secret generic llm-service-token-secret --from-literal=SERVICE_TO
 export SERVICE_TOKEN=myllservicetoken2024
 
 docker-compose up
+docker-compose -f docker-compose-ghimages.yaml up
