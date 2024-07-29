@@ -4,6 +4,30 @@
 
 This project is a chat application with a web interface developed using Streamlit and a backend developed with FastAPI. The backend integrates and loads the TinyLlama model directly to handle chat queries and generate responses to users' questions. The entire solution is containerized, allowing for deployment with both Docker Compose and Kubernetes.
 
+## Contents
+
+- [Features](#features)
+- [Technologies, Frameworks and Tools](#technologies-frameworks-and-tools)
+- [GitHub Actions CI/CD](#github-actions-cicd)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
+  - [Backend](#backend)
+  - [Frontend](#frontend)
+  - [Root Directory](#root-directory)
+- [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Installation for Local Development](#installation-for-local-development)
+   - [Frontend usage](#frontend-usage)
+   - [Backend API Usage](#backend-api-usage)
+   - [Building the Docker Image Locally](#building-the-docker-image-locally)
+   - [Running the Docker Image Locally](#running-the-docker-image-locally)
+   - [Deployment with Docker Compose](#deployment-with-docker-compose)
+   - [Deployment with Kubernetes](#deployment-with-kubernetes)
+- [Running Tests](#running-tests)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Features
 
 - Chat Interface with TinyLlama Model: The chat interface uses a TinyLlama model integrated within the backend to respond to user queries in natural language format with a conversational tone and context. The model is not hosted on Hugging Face but is instead downloaded and loaded directly in the backend for real-time response generation. View the [TinyLlama model](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0).
@@ -183,7 +207,7 @@ The root directory contains configuration files and documentation for the overal
 - FastAPI. View installation instructions in the [FastAPI documentation](https://fastapi.tiangolo.com/). Not necesary if you install dependencies by requirements.txt file.
 - Streamlit. View installation instructions in the [Streamlit documentation](https://docs.streamlit.io/). Not necesary if you install dependencies by requirements.txt file.
 
-### Installation
+### Installation for Local Development
 
 1. Clone the repository:
 
@@ -254,6 +278,8 @@ To build the Docker image for the frontend Streamlit application, run the follow
 docker build -t llm-tinyllama-frontend:latest frontend
 ```
 
+### Running the Docker Image Locally
+
 To run the Docker image for the backend FastAPI application, run the following command:
 
 ```bash
@@ -317,7 +343,7 @@ To deploy the services with Docker Compose using GitHub Container Registry image
     docker-compose -f docker-compose-ghimages.yaml down
     ```
 
-### Accessing the Services
+#### Accessing the Services
 
 - To access the frontend in Docker Compose, go to:
 
@@ -381,7 +407,7 @@ To deploy the backend and frontend services to Kubernetes, follow these steps:
     kubectl delete deployment chatllm-frontend-deployment
     ```
 
-### Accessing the Services
+#### Accessing the Services
 
 - To access the frontend in Kubernetes, go to:
 
@@ -393,7 +419,7 @@ To deploy the backend and frontend services to Kubernetes, follow these steps:
    ```bash
     http://localhost:8000/docs
     ```
-### Running Tests
+## Running Tests
 
 To run the tests for the backend FastAPI application, run the following command from the root directory:
 
@@ -407,7 +433,7 @@ To run the tests for the frontend Streamlit application, run the following comma
 pytest --cov=frontend/api --cov-report=term-missing frontend/tests/test_main.py
 ```
 
-### Documentation
+## Documentation
 
 For more information about Hubging Face LLM models, please refer to the [Hugging Face documentation](https://huggingface.co/).
 
@@ -420,8 +446,6 @@ For more information on using Streamlit, please refer to the [Streamlit document
 For more information on using Docker, please refer to the [Docker documentation](https://docs.docker.com/).
 
 For more information on using GitHub Actions, please refer to the [GitHub Actions documentation](https://docs.github.com/en/actions).
-
-
 
 ## Contributing
 
