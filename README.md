@@ -221,20 +221,32 @@ The root directory contains configuration files and documentation for the overal
    pip install -r backend/requirements.txt
    pip install -r frontend/requirements.txt
    ```
+3. Set SERVICE_TOKEN environment variable with the service token for the backend API. You can set the environment variable in the terminal before running the application:
 
-3. Run the backend FastAPI application:
+   (Linux/Mac)
+   ```bash
+   export SERVICE_TOKEN="myllservicetoken2024"
+   ```
+   or
+
+   (Windows)
+   ```bash
+   $env:SERVICE_TOKEN="myllservicetoken2024"
+   ```
+
+4. Run the backend FastAPI application:
 
    ```bash 
-    uvicorn backend.api.main:app --reload
+    uvicorn backend.api.main:api --reload
     ```
-4. Run the frontend Streamlit application:
+5. Run the frontend Streamlit application:
 
    ```bash
    streamlit run frontend/app/main.py
    ```
-5. Open your web browser and go to `http://localhost:8501` to access the Streamlit application Chat of the frontend.
+6. Open your web browser and go to `http://localhost:8501` to access the Streamlit application Chat of the frontend.
 
-6. Go to `http://localhost:8000/docs` to access the FastAPI Swagger documentation of the backend.
+7. Go to `http://localhost:8000/docs` to access the FastAPI Swagger documentation of the backend.
 
 ### Frontend usage
 
@@ -243,6 +255,8 @@ The root directory contains configuration files and documentation for the overal
 3. The backend API will process the message and generate a response using the TinyLlama model.
 4. The response will be displayed in the chat interface on the Streamlit application.
 
+![Chat Example](./images/chat_llm.png)
+
 From the frontend interface, you can interact with the chatbot and view the responses in real-time. The backend API handles the chatbot logic and interacts with the TinyLlama model to generate responses.
 
 You can adjust the following parameters in the Streamlit interface to control the chatbot responses  expand the "Config params" section:
@@ -250,6 +264,8 @@ You can adjust the following parameters in the Streamlit interface to control th
 - **Temperature**: The value used to control the randomness of the generated text.
 - **Top K**: The number of highest probability vocabulary tokens to keep for top-k-filtering.
 - **Top P**: The cumulative probability of parameter settings for nucleus sampling.
+
+![Chat Config params](./images/chat_config_params.png)
 
 The interface send all history of the chat to the backend API to generate the response. LLM model is a conversational model, so it needs the context of the conversation to generate the response correctly.
 
