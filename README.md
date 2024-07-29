@@ -159,9 +159,9 @@ The root directory contains configuration files and documentation for the overal
    ```bash
    streamlit run frontend/app/main.py
    ```
-5. Open your web browser and go to `http://localhost:8501` to access the Streamlit application.
+5. Open your web browser and go to `http://localhost:8501` to access the Streamlit application Chat of the frontend.
 
-6. Go to `http://localhost:8000/docs` to access the FastAPI Swagger documentation.
+6. Go to `http://localhost:8000/docs` to access the FastAPI Swagger documentation of the backend.
 
 ### Usage
 
