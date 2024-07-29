@@ -26,7 +26,11 @@ With GitHub Actions, you can automate your workflow from idea to production. You
 In this project, you can find the following workflows (only available with each change in the main branch):
 
 - **CI**: This workflow runs the unit tests (with pytest dependency) for the backend and frontend applications. This workflow is triggered when changes are pushed to the main branch
+
+![CI Workflow](./images/github_actions_ci.png)
+
 - **Build and Push Docker Images**: This workflow builds the Docker images for the backend and frontend applications and pushes them to GitHub Container Registry.  This workflow is triggered when the CI workflow passes successfully. You can find  images in the following public registries:
+    
     - [Backend Docker Image](https://github.com/users/adribaeza/packages/container/package/llm-tinyllama-backend)
       
       ```bash
@@ -38,6 +42,9 @@ In this project, you can find the following workflows (only available with each 
       ```bash
       docker pull ghcr.io/adribaeza/llm-tinyllama-frontend:latest
       ```
+
+![Build and Deploy Docker Images Workflow](./images/github_actions_build_docker.png)
+
 ## Architecture
 
 The architecture of the chat assistant application is designed to be modular and scalable. The application is divided into two main components: the frontend and the backend.
