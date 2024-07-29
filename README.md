@@ -36,7 +36,7 @@ In this project, you can find the following workflows (only available with each 
       ```bash
       docker pull ghcr.io/adribaeza/llm-tinyllama-frontend:latest
       ```
-# Architecture solution
+# Architecture
 
 The architecture of the chat assistant application is designed to be modular and scalable. The application is divided into two main components: the frontend and the backend.
 
