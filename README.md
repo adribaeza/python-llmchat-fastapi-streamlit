@@ -170,6 +170,18 @@ The root directory contains configuration files and documentation for the overal
 3. The backend API will process the message and generate a response using the TinyLlama model.
 4. The response will be displayed in the chat interface on the Streamlit application.
 
+From the frontend interface, you can interact with the chatbot and view the responses in real-time. The backend API handles the chatbot logic and interacts with the TinyLlama model to generate responses.
+
+You can adjust the following parameters in the Streamlit interface to control the chatbot responses:
+- **Max Tokens**: The maximum number of tokens to generate.
+- **Temperature**: The value used to control the randomness of the generated text.
+- **Top K**: The number of highest probability vocabulary tokens to keep for top-k-filtering.
+- **Top P**: The cumulative probability of parameter settings for nucleus sampling.
+
+The interface send all history of the chat to the backend API to generate the response. LLM model is a conversational model, so it needs the context of the conversation to generate the response correctly.
+
+For clear the chat history, you can click the "New Chat" button.
+
 ### Building the Docker Image Locally
 
 To build the Docker image for the backend FastAPI application, run the following command:
