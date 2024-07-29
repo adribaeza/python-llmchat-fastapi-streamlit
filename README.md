@@ -217,6 +217,8 @@ There are two Docker Compose files available for deployment (choose one):
 - `docker-compose.yml`: This file builds the Docker images for the backend and frontend applications and runs the services.
 - `docker-compose-ghimages.yaml`: This file pulls the Docker images from GitHub Container Registry and runs the services.
 
+#### Option 1
+
 To deploy the services with Docker Compose, follow these steps:
 
 1. Build and run the services:
@@ -229,6 +231,8 @@ To deploy the services with Docker Compose, follow these steps:
    ```bash
     docker-compose down
     ```
+
+#### Option 2
 
 To deploy the services with Docker Compose using GitHub Container Registry images, follow these steps:
 
