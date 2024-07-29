@@ -131,8 +131,8 @@ The root directory contains configuration files and documentation for the overal
 - Docker. If you deploy solution in your machine, you can download Docker Desktop from the [Docker website](https://www.docker.com/products/docker-desktop).
 - Kubernetes. You can enable Kubernetes in Docker Desktop by going to Preferences > Kubernetes > Enable Kubernetes in your machine if you want to deploy the solution in Kubernetes locally.
 - Python 3.8+. You can download it from the [Python website](https://www.python.org/downloads/).
-- FastAPI. View installation instructions in the [FastAPI documentation](https://fastapi.tiangolo.com/). Not necesary if you use requirements.txt file.
-- Streamlit. View installation instructions in the [Streamlit documentation](https://docs.streamlit.io/). Not necesary if you use requirements.txt file.
+- FastAPI. View installation instructions in the [FastAPI documentation](https://fastapi.tiangolo.com/). Not necesary if you install dependencies by requirements.txt file.
+- Streamlit. View installation instructions in the [Streamlit documentation](https://docs.streamlit.io/). Not necesary if you install dependencies by requirements.txt file.
 
 ### Installation
 
