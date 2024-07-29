@@ -250,13 +250,13 @@ To deploy the services with Docker Compose using GitHub Container Registry image
 - To access the frontend in Docker Compose, go to:
 
    ```bash
-    http://localhost:8501/
-    ```
+    http://localhost:8501
+   ```
 - To access the backend in Docker Compose, go to:
    
-      ```bash
-      http://localhost:8000/docs
-      ```
+   ```bash
+   http://localhost:8000/docs
+   ```
  
 ### Deployment with Kubernetes
 
