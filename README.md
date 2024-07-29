@@ -45,6 +45,7 @@ The project structure is organized into two main directories: `backend` and `fro
 
 The `backend` directory contains everything related to the FastAPI application. Here's the structure of the `backend` directory:
 
+```
 backend/
 ├── api/
 │ └── main.py
@@ -57,6 +58,7 @@ backend/
 ├── Dockerfile
 ├── Readme.md
 ├── requirements.txt
+```
 
 ### Files
 
@@ -72,6 +74,7 @@ backend/
 
 The `frontend` directory contains everything related to the Streamlit application. Here's the structure of the `frontend` directory:
 
+```
 frontend/
 ├── app/
 │ └── main.py
@@ -84,6 +87,7 @@ frontend/
 ├── Dockerfile
 ├── Readme.md
 ├── requirements.txt
+```
 
 ### Files
 
@@ -100,12 +104,14 @@ frontend/
 
 The root directory contains configuration files and documentation for the overall project:
 
+```
 ├── .github/
 ├── .gitignore
 ├── docker-compose-ghimages.yaml
 ├── docker-compose.yml
 ├── pytest.ini
 ├── README.md
+```
 
 ### Files
 
@@ -119,7 +125,6 @@ The root directory contains configuration files and documentation for the overal
 ## Overview
 
 The project structure is designed to separate the backend and frontend components of the application, making it easier to manage and deploy each part independently. The `backend` directory contains the FastAPI application code, while the `frontend` directory contains the Streamlit application code. The root directory contains common configuration files and documentation for the entire project.
-
 
 ## Getting Started
 
