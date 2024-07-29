@@ -40,11 +40,12 @@ In this project, you can find the following workflows (only available with each 
 
 The architecture of the chat assistant application is designed to be modular and scalable. The application is divided into two main components: the frontend and the backend.
 
-Frontend (Streamlit):
+**Frontend (Streamlit):**
 
 Developed with Streamlit, it provides the user interface for interacting with the chatbot.
 Users can send chat messages and receive responses through the frontend interface.
-Backend (FastAPI):
+
+**Backend (FastAPI):**
 
 Developed with FastAPI, it handles the chatbot logic and interactions with the TinyLlama model.
 The TinyLlama model, a conversational language model, is downloaded and loaded within the backend to generate real-time responses.
