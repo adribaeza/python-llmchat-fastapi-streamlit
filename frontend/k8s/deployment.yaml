@@ -20,6 +20,8 @@ spec:
         env:
         - name: RUNNING_IN_DOCKER
           value: "true"
+        - name: DOCKER_API_URL
+          value: http://host.docker.internal:8000/api/v1/chat
         - name: SERVICE_TOKEN
           valueFrom:
             secretKeyRef:
