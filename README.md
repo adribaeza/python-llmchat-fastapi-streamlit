@@ -276,11 +276,12 @@ There are Kubernetes configuration files available for deployment:
 - `frontend/k8s/service.yaml`: This file defines the Kubernetes Service for the frontend Streamlit application.
 
 To deploy the backend and frontend services to Kubernetes, follow these steps:
+
 0. Generate a secret for the backend service token (used for authentication between the frontend and backend services):
    
    ```bash
     kubectl create secret generic llm-service-token-secret --from-literal=SERVICE_TOKEN=myllservicetoken2024
-    ```
+   ```
 
 1. Deploy the backend:
 
