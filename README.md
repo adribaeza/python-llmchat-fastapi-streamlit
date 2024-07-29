@@ -76,8 +76,6 @@ The application is designed to be user-friendly and interactive, allowing users 
 +--------------------------------------+
 ```
 
-![Architecture Diagram](images/architecture-diagram.png)
-
 # Project Structure
 
 The project structure is organized into two main directories: `backend` and `frontend`. In root directory, you can find the configuration files and documentation for the overall project.
