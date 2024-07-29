@@ -1,3 +1,9 @@
+'''
+#####################  Streamlit Chat With LLM Model   #########################################
+Author: Adrián Baeza Prieto
+Github: @adribaeza
+Python 3.10+
+'''
 import streamlit as st
 import requests, logging, os
 from dotenv import load_dotenv
@@ -20,30 +26,29 @@ DEFAULT_TEMPERATURE = 0.5
 DEFAULT_TOP_K = 50
 DEFAULT_TOP_P = 0.9
 
-
-# Función para limpiar el historial de mensajes
+# Function to clear the chat history
 def clear_chat():
     st.session_state.messages = []
 
 def main():
 
-    # Configuración de la página
+    # Page configuration
     st.set_page_config(
         page_title="Chat with TinyLlama",
-        page_icon=":robot_face:",  # Puedes usar un emoji o una URL a un favicon específico
+        page_icon=":robot_face:",
         layout="centered",
         initial_sidebar_state="auto",
     )
 
-    # Configuración de la interfaz
+    # Interface title
     st.title("Chat with TinnyLLama LLM model")
     st.write("Simple chat interface to interact with TinyLlama LLM model")
 
-    # Añadir un botón para iniciar un nuevo chat
+    # Add a button to clear the chat history
     if st.button("➕ New Chat", help="Click to start a new chat and clear the current conversation history"):
         clear_chat()
 
-    # Additional params with help text
+    # Additional params with help text to adjust the LLM model behavior
     with st.expander("Config params", expanded=False):
         max_new_tokens = st.number_input(
             "Max New Tokens", 
@@ -75,28 +80,28 @@ def main():
             help="The cumulative probability of parameter highest probability vocabulary tokens to keep for nucleus sampling."
         )
 
-
+    # Check if the session state has the messages attribute to initialize it
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
+    # Iterate over the messages in the session state to display them in the chat
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
-
+    # Add a chat input to interact with the assistant
     if prompt := st.chat_input("What is up?"):
+
+        # Add the user message to the chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
-        
         headers = {
             "Authorization": f"Bearer {STATIC_TOKEN}",
             "Content-Type": "application/json"
         }
-        # Construir el historial de la conversación
+        # Build the data payload for the API request
         conversation_history = [{"role": msg["role"], "content": msg["content"]} for msg in st.session_state.messages]
-    
-
         data = {
             "messages": conversation_history,
             "max_new_tokens": max_new_tokens,
@@ -106,6 +111,8 @@ def main():
             "top_p": top_p
         }
         logging.info(f"Request data: {data}")
+
+        # Make a request to the API
         try:
             with st.spinner("The assistant is thinking..."):
                 response = requests.post("http://host.docker.internal:8000/api/v1/chat", headers=headers, json=data)
@@ -123,7 +130,7 @@ def main():
             st.error("Failed to connect to the API")
             logging.error(f"Failed to connect to the API: {e}")
 
-    # Añadir un footer con el texto deseado
+    # Add a footer with the app information
     st.markdown(
         """
         <style>
@@ -145,15 +152,7 @@ def main():
         unsafe_allow_html=True
     )
 
+# Run the main function
 if __name__ == "__main__":
     main()
-
-#'''
-####  Run the Streamlit app
-#To run the Streamlit app, execute the following command in the terminal:
-#    
-#    ```bash
-#    streamlit run frontend/app/main.py
-#    ```
-#'''
    

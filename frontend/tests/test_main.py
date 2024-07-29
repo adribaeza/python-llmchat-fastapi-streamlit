@@ -1,4 +1,9 @@
-# test_main.py
+'''
+#####################  Frontend Unit Testing  #########################################
+Author: Adrián Baeza Prieto
+Github: @adribaeza
+Python 3.10+
+'''
 import unittest
 from unittest.mock import patch, MagicMock
 from frontend.app.main import clear_chat

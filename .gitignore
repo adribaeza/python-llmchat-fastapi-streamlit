@@ -3,3 +3,9 @@
 
 # pytest cache
 **/.pytest_cache/
+
+# Exclude .coverage files
+**/.coverage
+
+# Exclude .vscode files
+.vscode/

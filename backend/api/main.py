@@ -1,6 +1,6 @@
 '''
-#####################  FastAPI + TinyLlama + Docker #########################################
-Autor: Adrián Baeza Prieto
+#####################  FastAPI + TinyLlama Backend API #########################################
+Author: Adrián Baeza Prieto
 Github: @adribaeza
 Python 3.10+
 '''
@@ -73,7 +73,6 @@ logging.info('Adding v1 endpoints..')
 
 # Load the model with the TinyLlama model
 pipe = pipeline("text-generation", model=LLM_MODEL, torch_dtype=torch.bfloat16, device_map="auto")
-
 
 class Message(BaseModel):
     role: str
@@ -159,8 +158,3 @@ async def chat(request: ChatRequest, user: dict = Depends(get_current_user)):
 
 # Include main router in the API
 api.include_router(api_router)
-
-# Execute the API with Uvicorn only if the script is executed directly in the local environment
-#if __name__ == '__main__':
-#    import uvicorn
-#    uvicorn.run(api)
