@@ -1,5 +1,7 @@
 # Chat Assistant with Streamlit and FastAPI
 
+![TinyLlama](./images/tinyllama.png)
+
 This project is a chat application with a web interface developed using Streamlit and a backend developed with FastAPI. The backend integrates and loads the TinyLlama model directly to handle chat queries and generate responses to users' questions. The entire solution is containerized, allowing for deployment with both Docker Compose and Kubernetes.
 
 ## Features
