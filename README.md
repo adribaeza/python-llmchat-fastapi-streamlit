@@ -23,7 +23,7 @@ This project is a chat application with a web interface developed with Streamlit
 With GitHub Actions, you can automate your workflow from idea to production. You can build, test, and deploy your code right from GitHub.
 In this project, you can find the following workflows (only available with each change in the main branch):
 
-- **CI**: This workflow runs the tests with pytest for the backend and frontend applications. This workflow is triggered when changes are pushed to the main branch
+- **CI**: This workflow runs the unit tests (with pytest dependency) for the backend and frontend applications. This workflow is triggered when changes are pushed to the main branch
 - **Build and Push Docker Images**: This workflow builds the Docker images for the backend and frontend applications and pushes them to GitHub Container Registry.  This workflow is triggered when the CI workflow passes successfully. You can find images in the following links:
     - [Backend Docker Image](https://github.com/users/adribaeza/packages/container/package/llm-tinyllama-backend)
       ```bash
