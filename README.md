@@ -210,14 +210,14 @@ Replace `<container_id>` with the actual container ID of the running container.
 
 - Docker Desktop installed on your machine. You can download it from the [Docker website](https://www.docker.com/products/docker-desktop).
 
-#### Steps
+#### Deploy Options
 
 There are two Docker Compose files available for deployment (choose one):
 
 - `docker-compose.yml`: This file builds the Docker images for the backend and frontend applications and runs the services.
 - `docker-compose-ghimages.yaml`: This file pulls the Docker images from GitHub Container Registry and runs the services.
 
-#### Option 1
+##### Option 1: Build Docker Images with Docker Compose
 
 To deploy the services with Docker Compose, follow these steps:
 
@@ -232,7 +232,7 @@ To deploy the services with Docker Compose, follow these steps:
     docker-compose down
     ```
 
-#### Option 2
+##### Option2: GitHub Container Registry Images with Docker Compose
 
 To deploy the services with Docker Compose using GitHub Container Registry images, follow these steps:
 
