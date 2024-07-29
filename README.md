@@ -76,13 +76,13 @@ The application is designed to be user-friendly and interactive, allowing users 
 +--------------------------------------+
 ```
 
-# Project Structure
+## Project Structure
 
 The project structure is organized into two main directories: `backend` and `frontend`. In root directory, you can find the configuration files and documentation for the overall project.
 
 The project structure is designed to separate the backend and frontend components of the application, making it easier to manage and deploy each part independently. The `backend` directory contains the FastAPI application code, while the `frontend` directory contains the Streamlit application code. The root directory contains common configuration files and documentation for the entire project.
 
-## Backend
+### Backend
 
 The `backend` directory contains everything related to the FastAPI application. Here's the structure of the `backend` directory:
 
@@ -101,7 +101,7 @@ backend/
 ├── requirements.txt
 ```
 
-### Files
+#### Files
 
 - **api/main.py**: This is the main file for the FastAPI application. It's where the API is defined and the language model is loaded.
 - **k8s/deployment.yaml**: This is the Kubernetes configuration file for the backend Deployment.
@@ -111,7 +111,7 @@ backend/
 - **Dockerfile**: This file defines how the Docker image for the FastAPI application is built.
 - **requirements.txt**: This file lists the Python dependencies required for the FastAPI application.
 
-## Frontend
+### Frontend
 
 The `frontend` directory contains everything related to the Streamlit application. Here's the structure of the `frontend` directory:
 
@@ -130,7 +130,7 @@ frontend/
 ├── requirements.txt
 ```
 
-### Files
+#### Files
 
 - **app/main.py**: This is the main file for the Streamlit application. It's where the user interface is defined and interacts with the backend API.
 - **k8s/deployment.yaml**: This is the Kubernetes configuration file for the frontend Deployment.
@@ -141,7 +141,7 @@ frontend/
 - **Readme.md**: Documentation file for the frontend application.
 - **requirements.txt**: This file lists the Python dependencies required for the Streamlit web application.
 
-## Root Directory
+### Root Directory
 
 The root directory contains configuration files and documentation for the overall project:
 
@@ -154,7 +154,7 @@ The root directory contains configuration files and documentation for the overal
 ├── README.md
 ```
 
-### Files
+#### Files
 
 - **.github/**: Contains GitHub configuration files. Includes workflows for CI/CD integration with GitHub Actions.
 - **.gitignore**: Git ignore file.
@@ -284,7 +284,7 @@ To deploy the services with Docker Compose, follow these steps:
     docker-compose down
     ```
 
-##### Option2: GitHub Container Registry Images with Docker Compose
+##### Option 2: GitHub Container Registry Images with Docker Compose
 
 To deploy the services with Docker Compose using GitHub Container Registry images, follow these steps:
 
