@@ -210,11 +210,11 @@ Replace `<container_id>` with the actual container ID of the running container.
 
 #### Pre-requisites
 
-- Docker installed on your machine. You can download it from the [Docker website](https://www.docker.com/products/docker-desktop).
+- Docker Desktop installed on your machine. You can download it from the [Docker website](https://www.docker.com/products/docker-desktop).
 
 #### Steps
 
-There are two Docker Compose files available for deployment:
+There are two Docker Compose files available for deployment (choose one):
 
 - `docker-compose.yml`: This file builds the Docker images for the backend and frontend applications and runs the services.
 - `docker-compose-ghimages.yaml`: This file pulls the Docker images from GitHub Container Registry and runs the services.
