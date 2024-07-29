@@ -22,3 +22,4 @@ services:
       - backend
     environment:
       - SERVICE_TOKEN=myllservicetoken2024
+      - RUNNING_IN_DOCKER=true

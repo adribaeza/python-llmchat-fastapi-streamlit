@@ -8,16 +8,23 @@ import streamlit as st
 import requests, logging, os
 from dotenv import load_dotenv
 
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 # Load the environment variables from the .env file
 load_dotenv()
+
+# Get the API URL from the environment variables
+api_url = os.getenv('DOCKER_API_URL') if os.getenv('RUNNING_IN_DOCKER') else os.getenv('LOCAL_API_URL')
+
+# Loggin api_url
+logging.info(f"API URL: {api_url}")
+
 # Static token for the API
 STATIC_TOKEN = os.getenv("SERVICE_TOKEN")
 # Verify that the SERVICE_TOKEN is defined in the environment variables
 if STATIC_TOKEN is None:
     raise ValueError("The SERVICE_TOKEN environment variable is not defined")
-
-# Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Default LLM configuration values
 DEFAULT_MAX_NEW_TOKENS = 100
@@ -115,7 +122,7 @@ def main():
         # Make a request to the API
         try:
             with st.spinner("The assistant is thinking..."):
-                response = requests.post("http://host.docker.internal:8000/api/v1/chat", headers=headers, json=data)
+                response = requests.post(api_url, headers=headers, json=data)
                 logging.info(f"Response status code: {response.status_code}")
                 logging.info(f"Response content: {response.content}")
             if response.status_code == 200:

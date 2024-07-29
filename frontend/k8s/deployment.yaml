@@ -18,6 +18,8 @@ spec:
         ports:
         - containerPort: 8501
         env:
+        - name: RUNNING_IN_DOCKER
+          value: "true"
         - name: SERVICE_TOKEN
           valueFrom:
             secretKeyRef:

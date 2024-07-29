@@ -294,6 +294,20 @@ To build the Docker image for the frontend Streamlit application, run the follow
 docker build -t llm-tinyllama-frontend:latest frontend
 ```
 
+#### Accessing the Services
+
+- To access the frontend in Docker, go to:
+
+   ```bash
+    http://localhost:8501
+   ```
+- To access the backend in Docker, go to:
+
+   ```bash
+    http://localhost:8000/docs
+   ```
+**Note**: You can wait a few minutes for the bakcend load the TinyLlama model and be ready to receive requests.
+
 ### Running the Docker Image Locally
 
 To run the Docker image for the backend FastAPI application, run the following command:
@@ -371,6 +385,8 @@ To deploy the services with Docker Compose using GitHub Container Registry image
    ```bash
    http://localhost:8000/docs
    ```
+
+**Note**: You can wait a few minutes for the bakcend load the TinyLlama model and be ready to receive requests.
  
 ### Deployment with Kubernetes
 
@@ -434,7 +450,10 @@ To deploy the backend and frontend services to Kubernetes, follow these steps:
 
    ```bash
     http://localhost:8000/docs
-    ```
+   ```
+
+   **Note**: You can wait a few minutes for the bakcend load the TinyLlama model and be ready to receive requests.
+   
 ## Running Tests
 
 To run the tests for the backend FastAPI application, run the following command from the root directory:
