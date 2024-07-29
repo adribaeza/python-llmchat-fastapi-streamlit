@@ -34,7 +34,7 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/llm-tinyllama-backend:latest
 
       - name: Build and push frontend Docker image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./frontend
           file: ./frontend/Dockerfile
