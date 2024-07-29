@@ -41,6 +41,8 @@ In this project, you can find the following workflows (only available with each 
 
 The project structure is organized into two main directories: `backend` and `frontend`. In root directory, you can find the configuration files and documentation for the overall project.
 
+The project structure is designed to separate the backend and frontend components of the application, making it easier to manage and deploy each part independently. The `backend` directory contains the FastAPI application code, while the `frontend` directory contains the Streamlit application code. The root directory contains common configuration files and documentation for the entire project.
+
 ## Backend
 
 The `backend` directory contains everything related to the FastAPI application. Here's the structure of the `backend` directory:
@@ -121,10 +123,6 @@ The root directory contains configuration files and documentation for the overal
 - **docker-compose.yml**: Docker Compose configuration file for Build Docker images and run the services.
 - **pytest.ini**: Configuration file for pytest. Example: exclude directories from testing, set verbosity, etc.
 - **README.md**: Main documentation file for the project.
-
-## Overview
-
-The project structure is designed to separate the backend and frontend components of the application, making it easier to manage and deploy each part independently. The `backend` directory contains the FastAPI application code, while the `frontend` directory contains the Streamlit application code. The root directory contains common configuration files and documentation for the entire project.
 
 ## Getting Started
 
