@@ -28,11 +28,11 @@ In this project, you can find the following workflows (only available with each 
     - [Backend Docker Image](https://github.com/users/adribaeza/packages/container/package/llm-tinyllama-backend)
       ```bash
       docker pull ghcr.io/adribaeza/llm-tinyllama-backend:latest
-      ´´´
+      ```
     - [Frontend Docker Image](https: //github.com/users/adribaeza/packages/container/package/llm-tinyllama-frontend)
       ```bash
       docker pull ghcr.io/adribaeza/llm-tinyllama-frontend:latest
-      ´´´
+      ```
 
 # Project Structure
 
