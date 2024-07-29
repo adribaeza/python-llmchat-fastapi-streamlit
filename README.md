@@ -339,6 +339,8 @@ pytest --cov=frontend/api --cov-report=term-missing frontend/tests/test_main.py
 
 ### Documentation
 
+For more information about Hubging Face LLM models, please refer to the [Hugging Face documentation](https://huggingface.co/).
+
 For more information on using Kubernetes, please refer to the [Kubernetes documentation](https://kubernetes.io/docs/home/).
 
 For more information on using FastAPI, please refer to the [FastAPI documentation](https://fastapi.tiangolo.com/).
@@ -346,6 +348,10 @@ For more information on using FastAPI, please refer to the [FastAPI documentatio
 For more information on using Streamlit, please refer to the [Streamlit documentation](https://docs.streamlit.io/).
 
 For more information on using Docker, please refer to the [Docker documentation](https://docs.docker.com/).
+
+For more information on using GitHub Actions, please refer to the [GitHub Actions documentation](https://docs.github.com/en/actions).
+
+
 
 ## Contributing
 
