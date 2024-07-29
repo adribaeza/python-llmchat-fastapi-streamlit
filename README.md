@@ -335,12 +335,6 @@ To run the tests for the frontend Streamlit application, run the following comma
 pytest --cov=frontend/api --cov-report=term-missing frontend/tests/test_main.py
 ```
 
-### Postman collection
-
-You can find a Postman collection with the API endpoints in the following link:
-
-- [Postman Collection](https://www.getpostman.com/collections/7b3b3b3b3b3b3b3b3b3b)
-
 ### Documentation
 
 For more information on using Kubernetes, please refer to the [Kubernetes documentation](https://kubernetes.io/docs/home/).
