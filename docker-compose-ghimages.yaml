@@ -21,4 +21,5 @@ services:
     environment:
       - SERVICE_TOKEN=myllservicetoken2024
       - RUNNING_IN_DOCKER=true
+      - DOCKER_API_URL=http://host.docker.internal:8000/api/v1/chat
     

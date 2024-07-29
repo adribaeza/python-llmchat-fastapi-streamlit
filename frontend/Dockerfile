@@ -14,10 +14,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy .env file into the container at /app
 COPY .env /app
 
+ENV RUNNING_IN_DOCKER=true
+ENV SERVICE_TOKEN=myllservicetoken2024
+
 # Make port 8501 available to the world outside this container
 EXPOSE 8501
 
-ENV RUNNING_IN_DOCKER=true
 
 # Run app.py when the container launches
 CMD ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]
