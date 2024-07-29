@@ -310,7 +310,6 @@ To deploy the backend and frontend services to Kubernetes, follow these steps:
     kubectl delete deployment chatllm-backendapi-deployment
     kubectl delete deployment chatllm-frontend-deployment
     ```
-Remember to replace `chatllm-backendapi` and `chatllm-frontend` with the actual names of your services and deployments.
 
 ### Accessing the Services
 
