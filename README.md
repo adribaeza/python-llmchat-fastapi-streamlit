@@ -4,7 +4,7 @@ This project is a chat application with a web interface developed with Streamlit
 
 ## Features
 
-- Chat interface with a TinyLlama model hosted on Hugging Face to respond to user queries in natural language format with a conversational tone and context. View the [TinyLlama model](https://huggingface.co/adribaeza/llm-tinyllama).
+- Chat interface with a TinyLlama model hosted on Hugging Face to respond to user queries in natural language format with a conversational tone and context. View the [TinyLlama model](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0).
 - Web interface developed with Streamlit. The user can interact with the chatbot and view the responses in real-time. View the [Streamlit documentation](https://docs.streamlit.io/).
 - Backend API developed with FastAPI. The API handles the chatbot logic and interacts with the TinyLlama model to generate responses. View the [FastAPI documentation](https://fastapi.tiangolo.com/).
 - Containerized images with Docker
@@ -25,8 +25,14 @@ In this project, you can find the following workflows (only available with each 
 
 - **CI**: This workflow runs the tests with pytest for the backend and frontend applications. This workflow is triggered when changes are pushed to the main branch
 - **Build and Push Docker Images**: This workflow builds the Docker images for the backend and frontend applications and pushes them to GitHub Container Registry.  This workflow is triggered when the CI workflow passes successfully. You can find images in the following links:
-    - [Backend Docker Image](ghcr.io/adribaeza/llm-tinyllama-backend:latest)
-    - [Frontend Docker Image](ghcr.io/adribaeza/llm-tinyllama-frontend:latest)
+    - [Backend Docker Image](https://github.com/users/adribaeza/packages/container/package/llm-tinyllama-backend)
+      ```bash
+      docker pull ghcr.io/adribaeza/llm-tinyllama-backend:latest
+      ´´´
+    - [Frontend Docker Image](https: //github.com/users/adribaeza/packages/container/package/llm-tinyllama-frontend)
+      ```bash
+      docker pull ghcr.io/adribaeza/llm-tinyllama-frontend:latest
+      ´´´
 
 # Project Structure
 
