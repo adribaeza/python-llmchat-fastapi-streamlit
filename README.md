@@ -39,7 +39,7 @@ In this project, you can find the following workflows (only available with each 
 
 # Project Structure
 
-The project structure is organized into two main directories: `backend` and `frontend`.
+The project structure is organized into two main directories: `backend` and `frontend`. In root directory, you can find the configuration files and documentation for the overall project.
 
 ## Backend
 
