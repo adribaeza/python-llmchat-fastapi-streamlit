@@ -212,7 +212,7 @@ The root directory contains configuration files and documentation for the overal
 
 6. Go to `http://localhost:8000/docs` to access the FastAPI Swagger documentation of the backend.
 
-### Usage
+### Frontend usage
 
 1. Enter your message in the chat interface on the Streamlit application.
 2. Click the "Send" button to send the message to the backend API.
@@ -230,6 +230,15 @@ You can adjust the following parameters in the Streamlit interface to control th
 The interface send all history of the chat to the backend API to generate the response. LLM model is a conversational model, so it needs the context of the conversation to generate the response correctly.
 
 For clear the chat history, you can click the "New Chat" button.
+
+### Backend API Usage
+
+The backend API is a FastAPI application that handles the chatbot logic and interacts with the TinyLlama model to generate responses. The API exposes the following endpoints:
+
+- **POST /api/v1/chat**: This endpoint receives a chat messages from the frontend and generates a response using the TinyLlama model. View swuaager documentation in `http://localhost:8000/docs` for more information.
+
+- **GET /docs**: This endpoint provides the Swagger documentation for the backend API. You can access it by going to `http://localhost:8000/docs` in your web browser.
+
 
 ### Building the Docker Image Locally
 
