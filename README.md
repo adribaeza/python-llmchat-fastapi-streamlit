@@ -244,6 +244,20 @@ To deploy the services with Docker Compose using GitHub Container Registry image
    ```bash
     docker-compose -f docker-compose-ghimages.yaml down
     ```
+
+### Accessing the Services
+
+- To access the frontend in Docker Compose, go to:
+
+   ```bash
+    http://localhost:8501/
+    ```
+- To access the backend in Docker Compose, go to:
+   
+      ```bash
+      http://localhost:8000/docs
+      ```
+ 
 ### Deployment with Kubernetes
 
 #### Pre-requisites
@@ -307,6 +321,26 @@ Remember to replace `chatllm-backendapi` and `chatllm-frontend` with the actual 
    ```bash
     http://localhost:8000/docs
     ```
+### Running Tests
+
+To run the tests for the backend FastAPI application, run the following command from the root directory:
+
+```bash
+pytest --cov=backend/api --cov-report=term-missing backend/tests/test_main.py
+```
+
+To run the tests for the frontend Streamlit application, run the following command:
+
+```bash
+pytest --cov=frontend/api --cov-report=term-missing frontend/tests/test_main.py
+```
+
+### Postman collection
+
+You can find a Postman collection with the API endpoints in the following link:
+
+- [Postman Collection](https://www.getpostman.com/collections/7b3b3b3b3b3b3b3b3b3b)
+
 ### Documentation
 
 For more information on using Kubernetes, please refer to the [Kubernetes documentation](https://kubernetes.io/docs/home/).
