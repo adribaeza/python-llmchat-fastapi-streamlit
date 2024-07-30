@@ -316,6 +316,31 @@ docker stop <container_id>
 
 Replace `<container_id>` with the actual container ID of the running container.
 
+### Push image & versioning to specific registry
+
+To push the Docker image to a specific registry, you can use the following commands:
+
+```bash
+docker tag llm-tinyllama-backend:latest ghcr.io/adribaeza/llm-tinyllama-backend:latest
+docker push ghcr.io/adribaeza/llm-tinyllama-backend:latest
+```
+
+```bash
+docker tag llm-tinyllama-frontend:latest ghcr.io/adribaeza/llm-tinyllama-frontend:latest
+docker push ghcr.io/adribaeza/llm-tinyllama-frontend:latest
+```
+### Tag with specific version
+
+```bash
+docker tag llm-tinyllama-backend:latest ghcr.io/adribaeza/llm-tinyllama-backend:1.0.0
+docker push ghcr.io/adribaeza/llm-tinyllama-backend:1.0.0
+```
+
+```bash
+docker tag llm-tinyllama-frontend:latest ghcr.io/adribaeza/llm-tinyllama-frontend:1.0.0
+docker push ghcr.io/adribaeza/llm-tinyllama-frontend:1.0.0
+```
+
 #### Accessing the Services
 
 - To access the frontend in Docker, go to:
